@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<!-- saved from url=(0080)https://weiterbildung-informatik.wollw.de/content/examples/spioncamp/caesar.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<title>Caesar-Chiffre</title>
+</head>
+<body style="font-family: sans-serif; line-height: 1.6;">
+<!-- Interactive Caesar chiffre display -->
+<div id="caesar-main" style="margin: 1rem 0 1rem 0;">
+  <div id="caesar-display" style="margin: 0px; padding: 0px; width: 600px; height: 560px;">
+    <img id="caesar-bg" src="./Caesar-Chiffre_files/caesar_bg.png" style="width: 600px; height: 560px; position: absolute; top: 0px; left: 0px;">
+    <img id="caesar-rotor" src="./Caesar-Chiffre_files/caesar_rotor.png" style="width: 440px; height: 440px; position: absolute; top: 60px; left: 80px;">
+  </div>
+  <div id="caesar-buttons" style="width: 600px; text-align: center;">
+    <button id="caesar-button-next" class="btn btn-default" onclick="caesarUpdateRotor(1);">Nach rechts drehen</button>
+    <button id="caesar-button-prev" class="btn btn-default" onclick="caesarUpdateRotor(-1);">Nach links drehen</button>
+    <button id="caesar-button-reset" class="btn btn-default" onclick="caesarUpdateRotor(0);">Zurücksetzen</button>
+  </div>
+</div>
+<script>
+var caesarRotorPos = 0;
+function caesarUpdateRotor(d) {
+  let rotor = document.getElementById("caesar-rotor");
+  if (d > 0)
+    caesarRotorPos = (caesarRotorPos+1)%26;
+  else if (d < 0)
+    caesarRotorPos = (caesarRotorPos+25)%26;
+  else
+    caesarRotorPos = 0;
+  rotor.style.transform = "rotate("+((caesarRotorPos*360)/26)+"deg)";
+}
+</script>
+
+</body></html>
